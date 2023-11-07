@@ -68,12 +68,12 @@ def run_trajectory(master, trajectory):
 
 print('Control attitude without GPS')
 trajectory = [
-    (0, 0, 0, 0, False, 0.5, 3, 'hold the position for 3 seconds'),  # hold the position for 3 seconds
+    (0, 0, 0, 0, False, 0.5, 3, 'hold the position for 3 seconds'),
     (0, -10, 0, 0, False, 0.5, 10, 'move forward'),  # move forward
-    (0, 0, 0, 0, False, 0.5, 3, 'hold the position for 3 seconds'),
-    (0, -10, 90, 0, False, 0.5, 10, 'turn left'),
-    (0, 0, 0, 0, False, 0.5, 3, 'hold the position for 3 seconds'),
-    (0, 10, 0, 0, False, 0.5, 10, 'move backward'),   # move backward
+    (0, 0, 0, 0, False, 0.5, 3, 'hold the position for 3 seconds'),  # will fly with inertion
+    (0, -10, 90, 0, False, 0.5, 10, 'turn right'),
+    (0, 0, 0, 0, False, 0.5, 3, 'hold the position for 3 seconds'),  # will fly with inertion
+    (0, 10, 0, 0, False, 0.5, 10, 'move backward'),   # move backward but because of inertion a drone does not move backword
 ]
 
 # trajectory = [
