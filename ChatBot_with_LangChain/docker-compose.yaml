@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+#  web:
+#    build: ./report-service
+#    ports:
+#      - "8501:8501"
+#    depends_on:
+#      - db
+#    environment:
+#      - DB_NAME=postgres
+#      - DB_USER=admin
+#      - DB_PASSWORD=12345
+#      - DB_HOST=db
+#      - DB_PORT=5432
+#      - OPENAI_API_KEY=<your_token>
+#    volumes:
+#      - ./report-service/logs:/app/logs
+#      - ./report-service/data:/app/data
+#      - ./shared_scripts:/app/shared_scripts
+  db:
+    image: ankane/pgvector
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: 12345
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./data-module/init-db:/docker-entrypoint-initdb.d
+      - postgres_data:/var/lib/postgresql/data
+
+#  data_loader:
+#    build:
+#      context: ./udemy-service
+#    depends_on:
+#      - db
+#    environment:
+#      - DB_NAME=postgres
+#      - DB_USER=admin
+#      - DB_PASSWORD=12345
+#      - DB_HOST=db
+#      - DB_PORT=5432
+#    volumes:
+#      - ./udemy-service/logs:/udemy-service/logs
+#      - ./shared_scripts:/udemy-service/shared_scripts
+
+volumes:
+  postgres_data:
